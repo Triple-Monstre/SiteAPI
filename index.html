@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mon site</title>
+  <title>Recherche de films TMDb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <script src="java.js" async></script>
 </head>
@@ -12,5 +14,17 @@
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">À propos</a></li>
   </ul>
+  <h1>Recherche de films TMDb</h1>
+  <label for="searchInput">Recherche de films:</label>
+  <input type="text" id="searchInput" placeholder="Entrez le titre du film">
+  <button onclick="searchMovies()">Rechercher</button>
+
+  <div id="results"></div>
+
 </body>
 </html> 
+
+
+  
+  
+ 
