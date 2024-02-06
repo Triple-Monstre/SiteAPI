@@ -12,6 +12,7 @@ body {
     float: left;
   }
   li a {
+    list-style-type: none;
     display: block;
     color: white;
     text-align: center;
