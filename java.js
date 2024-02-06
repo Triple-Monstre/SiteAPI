@@ -57,3 +57,19 @@
     }
     const moviesContainer = document.getElementById('movies');
 
+
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMGU1MDk1Njc4NzZjMGVhZWVmODkwZTcyOTVmYzNjOCIsInN1YiI6IjY1ODE2MGY0N2U0MDNkMDkyNWY1NTBlYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DSg738QDDLOSEH-yj2fgng-DAHoecmMuML_nvE2QgII'
+  }
+};
+
+fetch('https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1', options)
+  .then(response => response.json())
+  .then(response => {
+      console.log(response.results[0].original_title);
+
+  })
+  .catch(err => console.error(err));
