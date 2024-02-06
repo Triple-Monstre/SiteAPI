@@ -1,70 +1,82 @@
 body {
-    background-color: #f2f2f2;
-  }
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  li {
-    float: left;
-  }
-  li a {
-    list-style-type: none;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  li a:hover {
-    background-color: #111;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    width: 100%; /* Largeur de la barre de menu */
-  }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-  main {
-    flex-grow: 1; /* Permet au contenu principal de s'étendre pour remplir l'espace disponible */
-    padding: 20px;
-  }
+li {
+  float: left;
+}
 
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
+li a {
+  list-style-type: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-  }
+li a:hover {
+  background-color: #111;
+}
 
-  button {
-    padding: 8px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
 
-  #results {
-    margin-top: 20px;
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+}
 
-  #results p {
-    margin: 5px 0;
-  }
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 8px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#results {
+  margin-top: 20px;
+}
+
+#results p {
+  margin: 5px 0;
+}
+
+#populaire {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
+  grid-gap: 10px; /* Espacement entre les images */
+}
+
+#populaire img {
+  width: 150px; /* Largeur souhaitée */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+

@@ -68,8 +68,22 @@ const options = {
 
 fetch('https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1', options)
   .then(response => response.json())
-  .then(response => {
-      console.log(response.results[0].original_title);
+  .then(data => {
+    const results = data.results;
+    const resultsContainer = document.getElementById('populaire');
 
+    results.forEach(movie => {
+      const originalTitle = movie.title;
+      const imageBaseUrl = 'https://image.tmdb.org/t/p/';
+      const imageSize = 'w500'; // Taille de l'image
+      const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
+      const image = document.createElement('div');
+      console.log("Titre original du film : ", originalTitle);
+      image.innerHTML= `
+      <h2>${movie.title}</h2>
+      <img src="${imageUrl}" alt="${movie.title}">
+  `;
+      resultsContainer.appendChild(image);
+    });
   })
   .catch(err => console.error(err));
