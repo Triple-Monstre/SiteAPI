@@ -73,6 +73,8 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
   grid-gap: 10px; /* Espacement entre les images */
+  -webkit-text-fill-color: #f2f2f2;
+  text-align: center;
 }
 
 #populaire img {
@@ -80,3 +82,22 @@ button {
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
 
+#results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
+  grid-gap: 10px; /* Espacement entre les images */
+}
+
+#results img {
+  width: 150px; /* Largeur souhaitée */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+.back {
+  background-image:  url(https://png.pngtree.com/thumb_back/fw800/background/20230427/pngtree-dark-movie-theater-showing-blue-seats-image_2554880.jpg);
+  background-size: cover;
+  background-position: center;   
+}
+
+header h1 {
+  text-align: center;
+}

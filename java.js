@@ -29,8 +29,6 @@
 
           if (response.results.length > 0) {
             response.results.forEach(movie => {
-              const movieTitle = document.createElement('p');
-              const movieDate = document.createElement('p');
               const imageBaseUrl = 'https://image.tmdb.org/t/p/';
               const imageSize = 'w500'; // Taille de l'image
               const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
@@ -38,12 +36,9 @@
               movieElement.innerHTML = `
                         <h2>${movie.title}</h2>
                         <img src="${imageUrl}" alt="${movie.title}">
+                        <h3>${movie.release_date}</h3>
                     `;
-              movieTitle.textContent = movie.title;
-              movieDate.textContent  = movie.release_date;
               resultsContainer.appendChild(movieElement);
-              resultsContainer.appendChild(movieTitle);
-              resultsContainer.appendChild(movieDate);
             });
           } else {
             resultsContainer.textContent = 'Aucun résultat trouvé.';
@@ -67,23 +62,26 @@ const options = {
 };
 
 fetch('https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1', options)
-  .then(response => response.json())
-  .then(data => {
-    const results = data.results;
-    const resultsContainer = document.getElementById('populaire');
+.then(response => response.json())
+.then(data => {
+  const results = data.results;
+  const resultsContainer = document.getElementById('populaire');
 
-    results.forEach(movie => {
-      const originalTitle = movie.title;
-      const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-      const imageSize = 'w500'; // Taille de l'image
-      const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
-      const image = document.createElement('div');
-      console.log("Titre original du film : ", originalTitle);
-      image.innerHTML= `
-      <h2>${movie.title}</h2>
-      <img src="${imageUrl}" alt="${movie.title}">
-  `;
-      resultsContainer.appendChild(image);
-    });
-  })
-  .catch(err => console.error(err));
+  results.forEach(movie => {
+    const originalTitle = movie.title;
+    const imageBaseUrl = 'https://image.tmdb.org/t/p/';
+    const imageSize = 'w500'; // Taille de l'image
+    const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
+    const image = document.createElement('div');
+    console.log("Titre original du film : ", originalTitle);
+    image.innerHTML= `
+    <h2>${movie.title}</h2>
+    <img src="${imageUrl}" alt="${movie.title}">
+`;
+    resultsContainer.appendChild(image);
+  });
+})
+.catch(err => console.error(err));
+
+
+ 
