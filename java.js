@@ -1,6 +1,7 @@
     const apiKey = 'e0e509567876c0eaeef890e7295fc3c8';
     const apiUrl = 'https://api.themoviedb.org/3';
-
+    const language= 'fr-FR'
+    const baseUrl= 'https://api.themoviedb.org/3/movie/popular'
     async function fetchTmdbData(endpoint, params = {}) {
       const queryParams = { ...params, api_key: apiKey };
       const url = new URL(`${apiUrl}${endpoint}`);
@@ -61,27 +62,59 @@ const options = {
   }
 };
 
-fetch('https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1', options)
-.then(response => response.json())
-.then(data => {
-  const results = data.results;
+// Fonction pour récupérer les films populaires d'une page donnée
+async function fetchPopularMovies(pageNumber) {
+  const apiUrl = `${baseUrl}?api_key=${apiKey}&language=${language}&page=${pageNumber}`;
+  try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      displayMovies(data.results);
+      displayPageNumbers(data.total_pages, pageNumber);
+  } catch (error) {
+      console.error('Erreur lors de la récupération des données :', error);
+  }
+}
+
+// Fonction pour afficher les films
+function displayMovies(movies) {
   const resultsContainer = document.getElementById('populaire');
+  resultsContainer.innerHTML = ''; // Effacer le contenu précédent
 
-  results.forEach(movie => {
-    const originalTitle = movie.title;
-    const imageBaseUrl = 'https://image.tmdb.org/t/p/';
-    const imageSize = 'w500'; // Taille de l'image
-    const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
-    const image = document.createElement('div');
-    console.log("Titre original du film : ", originalTitle);
-    image.innerHTML= `
-    <h2>${movie.title}</h2>
-    <img src="${imageUrl}" alt="${movie.title}">
-`;
-    resultsContainer.appendChild(image);
+  movies.forEach(movie => {
+      const originalTitle = movie.title;
+      const imageBaseUrl = 'https://image.tmdb.org/t/p/';
+      const imageSize = 'w500'; // Taille de l'image
+      const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
+      const image = document.createElement('div');
+      image.innerHTML= `<h2>${movie.title}</h2><img src="${imageUrl}" alt="${movie.title}">`;
+      resultsContainer.appendChild(image);
   });
-})
-.catch(err => console.error(err));
+}
+
+// Fonction pour afficher les numéros de page
+function displayPageNumbers(totalPages, currentPage) {
+  const pageNumbersContainer = document.getElementById('pageNumbers');
+  pageNumbersContainer.innerHTML = ''; // Effacer le contenu précédent
+
+  const pagesToDisplay = Math.min(totalPages, 20);
+
+  for (let i = 1; i <= pagesToDisplay; i++) {
+      const pageNumberLink = document.createElement('a');
+      pageNumberLink.href = '#';
+      pageNumberLink.textContent = i;
+      pageNumberLink.addEventListener('click', () => fetchPopularMovies(i));
+
+      if (i === currentPage) {
+          pageNumberLink.classList.add('currentPage');
+      }
+
+      pageNumbersContainer.appendChild(pageNumberLink);
+  }
+}
+
+// Afficher les films de la première page au chargement de la page
+fetchPopularMovies(1);
 
 
- 
+
+

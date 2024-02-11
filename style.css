@@ -48,7 +48,7 @@ label {
 }
 
 input {
-  width: 100%;
+  width: auto;
   padding: 8px;
   margin-bottom: 10px;
 }
@@ -93,11 +93,41 @@ button {
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
 .back {
-  background-image:  url(https://png.pngtree.com/thumb_back/fw800/background/20230427/pngtree-dark-movie-theater-showing-blue-seats-image_2554880.jpg);
+  background-image:  url(https://c.wallhere.com/photos/16/80/cinema_movie_cine_movies_p_blico_premiere_viewer_pel_culas-1045589.jpg!d);
   background-size: cover;
   background-position: center;   
 }
 
 header h1 {
   text-align: center;
+}
+
+
+footer {
+  text-align: center;
+}
+
+footer .pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+footer .pagination a {
+  margin: 0 5px;
+  padding: 8px 16px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+footer .pagination a:hover {
+  background-color: #0056b3;
+}
+
+footer .pagination a.currentPage {
+  background-color: #0056b3;
 }
