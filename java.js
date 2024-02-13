@@ -86,7 +86,7 @@ function displayMovies(movies) {
       const imageSize = 'w500'; // Taille de l'image
       const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
       const image = document.createElement('div');
-      image.innerHTML= `<h2>${movie.title}</h2><img src="${imageUrl}" alt="${movie.title}">`;
+      image.innerHTML= `<img src="${imageUrl}" alt="${movie.title}"/><h2>${movie.title}</h2>`;
       resultsContainer.appendChild(image);
   });
 }

@@ -61,20 +61,21 @@ button {
   cursor: pointer;
 }
 
-#results {
-  margin-top: 20px;
-}
-
-#results p {
-  margin: 5px 0;
-}
-
 #populaire {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
-  grid-gap: 10px; /* Espacement entre les images */
+  display: flex; /* Utilisation de flexbox pour disposer les résultats sur une seule ligne */
+  overflow-x: auto; /* Ajout d'une barre de défilement horizontale si nécessaire */
   -webkit-text-fill-color: #f2f2f2;
   text-align: center;
+  
+}
+
+#populaire h2 {
+  width: 180px; /* Largeur fixe pour chaque élément .movie */
+  margin-right: 10px; /* Espacement entre les éléments */
+  white-space: nowrap; /* Empêcher le texte de retourner à la ligne */
+  overflow: hidden; /* Masquer le texte dépassant la largeur */
+  text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est coupé */
+  font-size: small;
 }
 
 #populaire img {
@@ -86,12 +87,22 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
   grid-gap: 10px; /* Espacement entre les images */
+  overflow-y: auto;
 }
 
 #results img {
   width: 150px; /* Largeur souhaitée */
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
+
+#results {
+  margin-top: 20px;
+}
+
+#results p {
+  margin: 5px 0;
+}
+
 .back {
   background-image:  url(https://c.wallhere.com/photos/16/80/cinema_movie_cine_movies_p_blico_premiere_viewer_pel_culas-1045589.jpg!d);
   background-size: cover;
@@ -131,3 +142,5 @@ footer .pagination a:hover {
 footer .pagination a.currentPage {
   background-color: #0056b3;
 }
+
+
