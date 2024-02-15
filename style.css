@@ -78,11 +78,33 @@ button {
   font-size: small;
 }
 
-#populaire img {
+#Série img {
   width: 150px; /* Largeur souhaitée */
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
 
+#Série {
+  display: flex; /* Utilisation de flexbox pour disposer les résultats sur une seule ligne */
+  overflow-x: auto; /* Ajout d'une barre de défilement horizontale si nécessaire */
+  -webkit-text-fill-color: #f2f2f2;
+  text-align: center;
+  
+}
+
+#Série h2 {
+  width: 180px; /* Largeur fixe pour chaque élément .movie */
+  margin-right: 10px; /* Espacement entre les éléments */
+  white-space: nowrap; /* Empêcher le texte de retourner à la ligne */
+  overflow: hidden; /* Masquer le texte dépassant la largeur */
+  text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est coupé */
+  font-size: small;
+}
+
+#populaire img {
+  width: 150px; /* Largeur souhaitée */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+}
+ 
 #results {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
@@ -143,4 +165,7 @@ footer .pagination a.currentPage {
   background-color: #0056b3;
 }
 
+#pop h2{
+  color: white;
+}
 
