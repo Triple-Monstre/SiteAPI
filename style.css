@@ -71,7 +71,7 @@ button {
 }
  
 #populaire h2 {
-  width: 180px; /* Largeur fixe pour chaque élément .movie */
+  width: 180px; /* Largeur fixe pour chaque élément */
   margin-right: 10px; /* Espacement entre les éléments */
   white-space: nowrap; /* Empêcher le texte de retourner à la ligne */
   overflow: hidden; /* Masquer le texte dépassant la largeur */
@@ -117,7 +117,7 @@ button {
 }
 
 #results h2 {
-  width: 180px; /* Largeur fixe pour chaque élément .movie */
+  width: 180px; /* Largeur fixe pour chaque élément  */
   margin-right: 10px; /* Espacement entre les éléments */
   white-space: nowrap; /* Empêcher le texte de retourner à la ligne */
   overflow: hidden; /* Masquer le texte dépassant la largeur */

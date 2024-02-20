@@ -19,6 +19,7 @@
       }
     }
 
+    //focntion pour effectuer la recherche
     async function searchMovies() {
       const searchInput = document.getElementById('searchInput').value;
       const resultsContainer = document.getElementById('results');
@@ -80,7 +81,6 @@ async function fetchMovieDetails(movieId) {
 
 // Fonction pour afficher les détails d'un film
 function displayMovieDetails(movie) {
-  // Vous pouvez remplacer cette section par du code HTML pour afficher les détails du film dans une boîte modale ou une section dédiée de votre page.
   alert(`Titre: ${movie.original_title}\nDate de sortie: ${movie.release_date}\nNote moyenne: ${movie.vote_average}\nSynopsis: ${movie.overview}`);
 }
 
@@ -100,11 +100,11 @@ async function fetchPopularMovies(pageNumber) {
 
 //Fonction pour afficher les films populaires
 
-function displayMovies(movies) {
+  function displayMovies(movies) {
   const resultsContainer = document.getElementById('populaire');
   resultsContainer.innerHTML = ''; // Effacer le contenu précédent
 
-  movies.forEach(movie => {
+    movies.forEach(movie => {
       const originalTitle = movie.title;
       const imageBaseUrl = 'https://image.tmdb.org/t/p/';
       const imageSize = 'w500'; // Taille de l'image
@@ -113,12 +113,32 @@ function displayMovies(movies) {
       image.innerHTML = `<h2>${movie.title}</h2><img src="${imageUrl}" alt="${movie.title}">`;
       image.addEventListener('click', () => fetchMovieDetails(movie.id)); // Ajout d'un gestionnaire d'événements pour afficher les détails du film
       resultsContainer.appendChild(image);
-  });
-}
-
-
+    }); 
+  }
 // Afficher les films de la première page au chargement de la page
 fetchPopularMovies(1);
+
+
+
+
+
+
+// Fonction pour récupérer les détails d'un film par son ID
+async function fetchSerieDetails(serieId) {
+  const apiUrl = `https://api.themoviedb.org/3/movie/${serieId}?api_key=${apiKey}&language=${language}`;
+  try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      displaySerieDetails(data);
+  } catch (error) {
+      console.error('Erreur lors de la récupération des détails du film :', error);
+  }
+}
+
+// Fonction pour afficher les détails d'un film
+function displaySerieDetails(serie) {
+  alert(`Titre: ${serie.name}\nDate de sortie: ${serie.release_date}\nNote moyenne: ${serie.vote_average}`);
+}
 
 // Fonction pour récupérer les séries populaires d'une page donnée
 async function fetchPopularSeries(pageNumber) {
@@ -144,12 +164,15 @@ function displaySeries(series) {
       const imageUrl = imageSerieUrl + imageSize + serie.poster_path;
       const serieElement = document.createElement('div'); // Utiliser 'serieElement' au lieu de 'image' pour refléter le contenu
       serieElement.innerHTML= `<img src="${imageUrl}" alt="${serie.name}"/><h2>${serie.name}</h2>`;
+      serieElement.addEventListener('click', () => fetchSerieDetails(serie.id)); // Ajout d'un gestionnaire d'événements pour afficher les détails du film
       resultsContainer.appendChild(serieElement); // Utiliser 'serieElement' au lieu de 'image' pour l'ajout au conteneur
   });
 }
-
 // Afficher les séries de la première page au chargement de la page
 fetchPopularSeries(1);
+
+
+
 
 // Fonction pour afficher les numéros de page
 function displayPageNumbers(totalPages, currentPage) {
@@ -171,6 +194,7 @@ function displayPageNumbers(totalPages, currentPage) {
       pageNumbersContainer.appendChild(pageNumberLink);
   }
 }
+
 
 
 
