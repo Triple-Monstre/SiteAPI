@@ -64,6 +64,27 @@ const options = {
   }
 };
 
+
+
+// Fonction pour récupérer les détails d'un film par son ID
+async function fetchMovieDetails(movieId) {
+  const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=${language}`;
+  try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      displayMovieDetails(data);
+  } catch (error) {
+      console.error('Erreur lors de la récupération des détails du film :', error);
+  }
+}
+
+// Fonction pour afficher les détails d'un film
+function displayMovieDetails(movie) {
+  // Vous pouvez remplacer cette section par du code HTML pour afficher les détails du film dans une boîte modale ou une section dédiée de votre page.
+  alert(`Titre: ${movie.original_title}\nDate de sortie: ${movie.release_date}\nNote moyenne: ${movie.vote_average}\nSynopsis: ${movie.overview}`);
+}
+
+
 // Fonction pour récupérer les films populaires d'une page donnée
 async function fetchPopularMovies(pageNumber) {
   const apiUrl = `${baseUrl}?api_key=${apiKey}&language=${language}&page=${pageNumber}`;
@@ -77,17 +98,20 @@ async function fetchPopularMovies(pageNumber) {
   }
 }
 
-// Fonction pour afficher les films
+//Fonction pour afficher les films populaires
+
 function displayMovies(movies) {
   const resultsContainer = document.getElementById('populaire');
   resultsContainer.innerHTML = ''; // Effacer le contenu précédent
 
   movies.forEach(movie => {
+      const originalTitle = movie.title;
       const imageBaseUrl = 'https://image.tmdb.org/t/p/';
       const imageSize = 'w500'; // Taille de l'image
       const imageUrl = imageBaseUrl + imageSize + movie.poster_path;
       const image = document.createElement('div');
-      image.innerHTML= `<img src="${imageUrl}" alt="${movie.title}"/><h2>${movie.title}</h2>`;
+      image.innerHTML = `<h2>${movie.title}</h2><img src="${imageUrl}" alt="${movie.title}">`;
+      image.addEventListener('click', () => fetchMovieDetails(movie.id)); // Ajout d'un gestionnaire d'événements pour afficher les détails du film
       resultsContainer.appendChild(image);
   });
 }
@@ -147,5 +171,7 @@ function displayPageNumbers(totalPages, currentPage) {
       pageNumbersContainer.appendChild(pageNumberLink);
   }
 }
+
+
 
 

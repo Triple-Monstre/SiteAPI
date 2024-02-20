@@ -1,10 +1,11 @@
+
 body {
   background-color: #f2f2f2;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-
+ 
 ul {
   list-style-type: none;
   margin: 0;
@@ -12,11 +13,11 @@ ul {
   overflow: hidden;
   background-color: #333;
 }
-
+ 
 li {
   float: left;
 }
-
+ 
 li a {
   list-style-type: none;
   display: block;
@@ -25,50 +26,50 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
+ 
 li a:hover {
   background-color: #111;
 }
-
+ 
 header {
-  background-color: #333;
-  color: white;
+  
   padding: 10px;
   text-align: center;
 }
-
+ 
 .content {
   display: flex;
   flex-direction: column;
 }
-
+ 
 label {
   display: block;
   margin-bottom: 10px;
 }
-
+ 
 input {
   width: auto;
   padding: 8px;
   margin-bottom: 10px;
 }
-
+ 
 button {
   padding: 8px;
   background-color: #007BFF;
   color: white;
   border: none;
   cursor: pointer;
+  overflow-x: auto;
 }
-
+ 
 #populaire {
   display: flex; /* Utilisation de flexbox pour disposer les résultats sur une seule ligne */
   overflow-x: auto; /* Ajout d'une barre de défilement horizontale si nécessaire */
   -webkit-text-fill-color: #f2f2f2;
   text-align: center;
-  
+ 
 }
-
+ 
 #populaire h2 {
   width: 180px; /* Largeur fixe pour chaque élément .movie */
   margin-right: 10px; /* Espacement entre les éléments */
@@ -77,20 +78,20 @@ button {
   text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est coupé */
   font-size: small;
 }
-
+ 
 #Série img {
   width: 150px; /* Largeur souhaitée */
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
-
+ 
 #Série {
   display: flex; /* Utilisation de flexbox pour disposer les résultats sur une seule ligne */
   overflow-x: auto; /* Ajout d'une barre de défilement horizontale si nécessaire */
   -webkit-text-fill-color: #f2f2f2;
   text-align: center;
-  
+ 
 }
-
+ 
 #Série h2 {
   width: 180px; /* Largeur fixe pour chaque élément .movie */
   margin-right: 10px; /* Espacement entre les éléments */
@@ -99,7 +100,7 @@ button {
   text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est coupé */
   font-size: small;
 }
-
+ 
 #populaire img {
   width: 150px; /* Largeur souhaitée */
   height: auto; /* Hauteur automatique pour conserver les proportions */
@@ -110,43 +111,52 @@ button {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Chaque colonne a une taille minimale de 200px et s'adapte automatiquement à la largeur disponible */
   grid-gap: 10px; /* Espacement entre les images */
   overflow-y: auto;
+  background-color: black;
+  margin-top: 20px;
+  -webkit-text-fill-color: #f2f2f2;
 }
 
+#results h2 {
+  width: 180px; /* Largeur fixe pour chaque élément .movie */
+  margin-right: 10px; /* Espacement entre les éléments */
+  white-space: nowrap; /* Empêcher le texte de retourner à la ligne */
+  overflow: hidden; /* Masquer le texte dépassant la largeur */
+  text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est coupé */
+  font-size: small;
+}
+ 
 #results img {
   width: 150px; /* Largeur souhaitée */
   height: auto; /* Hauteur automatique pour conserver les proportions */
 }
-
-#results {
-  margin-top: 20px;
-}
-
+ 
 #results p {
   margin: 5px 0;
 }
-
+ 
 .back {
   background-image:  url(https://c.wallhere.com/photos/16/80/cinema_movie_cine_movies_p_blico_premiere_viewer_pel_culas-1045589.jpg!d);
   background-size: cover;
-  background-position: center;   
+  background-position: center;  
 }
-
+ 
 header h1 {
   text-align: center;
 }
-
-
+ 
+ 
 footer {
   text-align: center;
 }
-
+ 
 footer .pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-
+ 
 footer .pagination a {
+  display: flex;
   margin: 0 5px;
   padding: 8px 16px;
   background-color: #007BFF;
@@ -156,16 +166,16 @@ footer .pagination a {
   border-radius: 4px;
   cursor: pointer;
 }
-
+ 
 footer .pagination a:hover {
   background-color: #0056b3;
 }
-
+ 
 footer .pagination a.currentPage {
   background-color: #0056b3;
 }
-
+ 
 #pop h2{
   color: white;
 }
-
+ 
